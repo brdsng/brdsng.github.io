@@ -2,3 +2,31 @@
 ---
 
 @import "{{ site.theme }}";
+
+.project-name {
+  margin-top: 0;
+  margin-bottom: 0.1rem;
+
+  @include large {
+    font-size: 3.25rem;
+    height: 3.25rem;
+  }
+
+  @include medium {
+    font-size: 2.25rem;
+    height: 2.25rem;
+  }
+
+  @include small {
+    font-size: 1.75rem;
+    height: 1.75rem;
+  }
+}
+
+img.project-name {
+  padding-right: 10px;
+}
+
+p.project-name {
+  display: inline;
+}
