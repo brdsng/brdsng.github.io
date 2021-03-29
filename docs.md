@@ -3,7 +3,6 @@ layout: default
 title: Commands
 ---
 
-
 # Command Reference
 
 There are three access levels to keep in mind when working with Birdsong commands:
@@ -13,3 +12,7 @@ There are three access levels to keep in mind when working with Birdsong command
 - **Owner:** The owner of a guild can run these commands in their guild.
 
 ## Access Level: **All**
+
+## Access Level: **Mod**
+
+## Access Level: **Owner**
