@@ -8,8 +8,8 @@ title: Why Birdsong?
 
 You may be asking yourself: "There's plenty of mod bots out there; why should I use Birdsong?"
 
-## ✔️ You want **ease of use**
+## <span class='header-emoji'>✔️</span> You want **ease of use**
 
-## ⏳ You want **speed**
+## <span class='header-emoji'>⏳</span> You want **speed**
 
-## 🔨 You want **control**
+## <span class='header-emoji'>🔨</span> You want **control**

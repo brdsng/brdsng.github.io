@@ -28,5 +28,11 @@ img.project-name {
 }
 
 p.project-name {
+  font-weight: bold;
   display: inline;
+}
+
+.header-emoji {
+  display: block;
+  min-width: 40px;
 }
