@@ -25,6 +25,7 @@
 
 img.project-name {
   padding-right: 10px;
+  vertical-align: text-bottom;
 }
 
 p.project-name {
@@ -33,6 +34,7 @@ p.project-name {
 }
 
 .header-emoji {
-  display: block;
+  display: inline-block;
   min-width: 40px;
+  text-align: center;
 }
