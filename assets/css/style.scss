@@ -28,9 +28,10 @@ img.project-name {
   vertical-align: text-bottom;
 }
 
-p.project-name {
+a.project-name {
   font-weight: bold;
   display: inline;
+  color: inherit;
 }
 
 .header-emoji {
