@@ -19,16 +19,16 @@ Want to get Birdsong set up in your server quick? Follow the two-step guide belo
 To configure Birdsong's settings in your guild, you will need to use the `>>set` command. This command can only be used by the server owner.
 
 ```
->>set mod_role <role>
+$$set mod_role <role>
 ```
 
-Set which role you'd like to have moderator permissions. Users with moderator permissions can issue punishments and read modlogs. Until you set this setting, only the owner can run mod-level commands. [Read more about moderator permissions.](/docs#access-level-all)
+Set which role you'd like to have moderator permissions. **If you don't have a mod role set up, only the server owner can run mod commands.** [Read more about moderator permissions.](/docs#access-level-all)
 
 ```
 $$set mute_role <role>
 ```
 
-When a user gets muted, Birdsong will apply this role to them. IMPORTANT: If you don't have this set up, Birdsong will not be able to mute users in your server!
+When a user gets muted, Birdsong will apply this role to them. **If you don't have a mute role set up, Birdsong will not be able to mute users in your server.**
 
 ```
 $$set log_channel <channel>
@@ -39,7 +39,7 @@ When a guild moderator issues a punishment, Birdsong will send a short blurb abo
 $$set appeal_link <link>
 ```
 
-Set a link which users will be directed to appeal if they receive a permanent ban. If you're a server who wants to give users a second chance, this option is for you.
+Set a link which users will be directed to appeal if they receive a permanent ban. If you're a server with your own dedicated appeal form, this option is up your alley.
 
 ## Step 3: Learn how to punish
 
@@ -56,8 +56,6 @@ In the command, `<user>` can be a user mention or ID, and `<reason>` is optional
 ```
 $$point @miike 1 spamming in #general
 ```
-
-Once you run this command, the user will be given points and punished based on their prior point value.
 
 If you make a mistake, you can reverse a punishment by giving the user negative points:
 
