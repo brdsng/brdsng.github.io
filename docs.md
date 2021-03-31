@@ -11,8 +11,21 @@ There are three access levels to keep in mind when working with Birdsong command
 - **Mod:** Users with the designated moderator role in a guild can run these commands in that guild.
 - **Owner:** The owner of a guild can run these commands in their guild.
 
-## Access Level: **All**
+# Access Level: **All**
 
-## Access Level: **Mod**
+# Access Level: **Mod**
 
-## Access Level: **Owner**
+## `$$point <user> <points> <reason?>`
+
+- `points`: Integer between -100 and 100
+- `user`: User ID or mention
+- `reason`: Short description of the punishment (<256 characters) (opt.)
+
+Issue the user a certain a punishment including a certain number of points, and an optional reason.
+
+- If `<points>` is positive, issue a punishment.
+- If `<points>` is negative, issue no punishment.
+
+The command will always cancel any active punishment the user may have had, and will note if it does so.
+
+# Access Level: **Owner**

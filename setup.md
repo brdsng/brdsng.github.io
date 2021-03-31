@@ -22,7 +22,7 @@ To configure Birdsong's settings in your guild, you will need to use the `>>set`
 $$set mod_role <role>
 ```
 
-Set which role you'd like to have moderator permissions. **If you don't have a mod role set up, only the server owner can run mod commands.** [Read more about moderator permissions.](/docs#access-level-all)
+Set which role you'd like to have moderator permissions. **If you don't have a mod role set up, only the server owner can run mod commands.** [Read more about moderator permissions.](/docs#access-level-mod)
 
 ```
 $$set mute_role <role>
