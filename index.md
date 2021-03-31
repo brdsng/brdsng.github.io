@@ -13,6 +13,7 @@ Birdsong is a modern Discord modbot for ease, speed, and control in modding. Are
 - **[Quick Setup](/setup)**
 - [Frequently Asked Questions](/faq)
 - [Commands Documentation](/docs)
+- [Punishment Key](/pkey)
 
 ## Contributors
 
