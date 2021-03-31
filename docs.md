@@ -13,9 +13,35 @@ There are three access levels to keep in mind when working with Birdsong command
 
 # Access Level: **All**
 
+## `$$points`
+
+**Requires permissions:**
+
+- Channel: `add_reactions`
+
+Returns the user's current point value in a DM. If the user has private messages turned off, the command will fail.
+
+
+## `$$help`
+
+**Aliases:** `$$info`, `$$about`
+
+**Requires permissions:**
+
+- Channel: `add_reactions`
+
+Sends an informational message about the bot in a DM. If the user has private messages turned off, the command will fail.
+
+
 # Access Level: **Mod**
 
 ## `$$point <user> <points> <reason?>`
+
+Requires permissions:
+
+-
+
+Arguments:
 
 - `points`: Integer between -100 and 100
 - `user`: User ID or mention
