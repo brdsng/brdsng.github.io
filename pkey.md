@@ -12,7 +12,7 @@ In the future, Birdsong will support custom punishment keys. Stay tuned!
 ## The Key:
 
 ```
-0 points:  nothing
+0 points:  none (n/a)
 1 point:   warning
 2 points:  15 minute mute
 3 points:  30 minute mute

@@ -125,9 +125,60 @@ This command will fail if the target user is not in the guild.
 
 - `user`: Punishment ID (valid eight-character identifier from a modlog)
 
-View information about a specific punishment, similar to `$$logs`.
+View information about a specific punishment, in a similar fashion as `$$logs`.
 
 This command will fail if the target punishment ID does not exist.
 
 
 # Access Level: **Owner**
+
+***
+
+> ## `$$set <setting> <value|none>`
+
+**Requires permissions:**
+
+- Channel: `send_messages`
+
+**Arguments:**
+
+- `setting`: A valid, alphanumeric setting (see below)
+- `value`: The value to set, or "none" or "null" (see below for types)
+
+Set a guild-wide configuration setting. Pass in "none" or "null" for any setting to reset that setting (may have unintended consequences, read below).
+
+**List of settings:**
+
+- `log_channel`: Channel ID or mention
+
+Set the guild's moderator log channel. When a moderator punishes a user, a short description of the punishment will be sent to this channel for logging purposes. It is recommended you keep this channel private and restricted to viewing for only moderators and guild admins.
+
+- `mod_role`: Role ID or mention
+
+Set the guild's moderator role. When this is set, users that have the specific role will be able to run moderator commands.
+
+Note: If this role is not set, only the guild owner will be able to run moderation commands.
+
+- `mute_role`: Role ID or mention
+
+Set the guild's mute role. When a user in the guild is muted, the bot will automatically give them this role. It is recommended you restrict sending and speaking permissions on this role so it functions as a proper mute.
+
+Note: If this role is not set, any attempts to mute users in the guild will fail.
+
+- `appeal_link`: Valid link
+
+Set the guild's appeal link. When a user is permanently banned at 12 points, if the guild has an appeal link set, the user will be sent the appeal link in their ban message. This will allow for guilds to run their own appeal forms (typically through Google Forms).
+
+Note: All link inputs are parsed by a non-strict regex. If you are repeatedly getting an "invalid link" error, ensure that you have passed in a protocol (ex. `https://`) and there are no abnormal characters in the link.
+
+***
+
+> ## `$$settings`
+
+**Requires permissions:**
+
+- Channel: `send_messages`
+
+Returns all of the guild's currently set settings. Any setting that has not been set will read as "none set".
+
+To set settings, use the `$$set` command.
