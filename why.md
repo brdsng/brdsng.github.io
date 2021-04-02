@@ -12,16 +12,24 @@ You may be asking yourself: "There's plenty of mod bots out there; why should I 
 
 You've tried other mod bots, and they're cluttered with pages of documentation and things you don't really need. You find it annoying to check the logs *every time* someone breaks the rules.
 
-*etc...*
+Your server can get started using Birdsong in less than a minute; our setup process is quick and simple. Refer to the [quick setup guide](/setup) to have your guild configured quickly. Once configured, issuing punishments and checking logs is trivial; just one command for all your warns, mutes, and bans through our point system.
+
+Birdsong was designed to make user experience as easy as possible to improve your moderation workflow. Leave the hard parts up to us.
 
 ## <span class='header-emoji'>⏳</span> You want **speed**
 
-You don't like switching back and forth between channels, checking logs, checking with your team before punishing your users. You've tried other mod bots, and they're *clunky and slow!*
+You don't like switching back and forth between channels, checking logs, checking with your team before punishing your users. You've tried other mod bots, but they're clunky and break often!
 
-*etc...*
+Birdsong's optimized backend system means that users will be punished immediately when they are given points. There's no waiting for the bot to respond; we do the hard work quick so you can take care of troublemakers with grace.
+
+And to prove it to you, we guarantee a <1 second response time on all `$$point` commands, and no significant downtime, making Birdsong a trusty, reliable option for your server.
 
 ## <span class='header-emoji'>🔨</span> You want **control**
 
-You're tired of your users saying *"you're not being fair!"* and disregarding your rules. You're done with users who are constantly on the line of being banned. You want control over your users, in a simple way.
+You always try your best to enforce your rules, but the users are rebellious, try to find loopholes, and cry 'mod abuse'. You want to get them under control, and you want the bad actors gone.
 
-*etc...*
+Our accumulative infraction point system encourages all users to follow the rules to the best of their ability, because they know with more points comes greater punishment.
+
+Also, it's much harder for users to justify claims of "mod abuse", because the burden of deciding how long to mute or ban someone falls off the moderators.
+
+### [Get started!](/setup)
