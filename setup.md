@@ -14,7 +14,17 @@ Want to get Birdsong set up in your server quick? Follow the two-step guide belo
 
 **IMPORTANT:** It is highly recommended that you do not change the default permissions preset; Birdsong may not function properly without certain permissions!
 
-## Step 2: Configure some settings
+## Step 2: Enable developer mode
+
+Discord's developer mode allows you to right-click on users, channels, roles, and guilds, and copy their internal ID. This ID can be passed to any commands that support them. Discord IDs are useful because they don't mention the role/user and they don't require the user to be a member of the server. **It is highly recommended that all moderators enable developer mode.**
+
+1. Go to your user settings.
+2. Click on the "Advanced" tab.
+3. Enable the "Developer Mode" option.
+
+[Read more about developer mode.](https://discordia.me/en/developer-mode)
+
+## Step 3: Configure some settings
 
 To configure Birdsong's settings in your guild, you will need to use the `>>set` command. This command can only be used by the server owner.
 
@@ -41,9 +51,9 @@ $$set appeal_link <link>
 
 Set a link which users will be directed to appeal if they receive a permanent ban. If you're a server with your own dedicated appeal form, this option is up your alley.
 
-## Step 3: Learn how to punish
+## Step 4: Learn how to punish
 
-> **IMPORTANT:** Birdsong uses a default key to associate points with punishments; you can read about it [here](/pkey). In the future, the bot will support custom punishment values per guild.
+> **IMPORTANT: Birdsong uses a default key to associate points with punishments; you can read about it [here](/pkey). In the future, the bot will support custom punishment values per guild.**
 
 Birdsong was created as an infraction point system to punish users. The syntax for giving infraction points is:
 

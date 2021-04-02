@@ -3,13 +3,11 @@ layout: default
 title: Punishment Key
 ---
 
-# Global Punishment Key
+# What's a punishment key?
 
 For sake of use, Birdsong includes a global punishment key. This means that when a user is given a positive amount of points, their new point total will determine their punishment according to the key found below.
 
-In the future, Birdsong will support custom punishment keys. Stay tuned!
-
-## The Key:
+Part of using Birdsong is deciding how server rules weigh with points. You may use the [r/teenagers discord point document](https://docs.google.com/document/d/1GGGsdIu24D8oSXSJoCSgXE01Y9sS1pSQ-3AKGxcqtfk/edit) for reference when authoring your own.
 
 ```
 0 points:  none (n/a)
