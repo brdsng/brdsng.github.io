@@ -26,7 +26,7 @@ Discord's developer mode allows you to right-click on users, channels, roles, an
 
 ## Step 3: Configure some settings
 
-To configure Birdsong's settings in your guild, you will need to use the `>>set` command. This command can only be used by the server owner.
+To configure Birdsong's settings in your guild, you will need to use the `$$set` command. This command can only be used by the server owner.
 
 ```
 $$set mod_role <role>
@@ -50,6 +50,12 @@ $$set appeal_link <link>
 ```
 
 Set a link which users will be directed to appeal if they receive a permanent ban. If you're a server with your own dedicated appeal form, this option is up your alley.
+
+```
+$$set decay_rate <int>
+```
+
+Set the rate of point decay, in days. This defaults to 7 (one week). Every `n` days without receiving a punishment, a user will decay one point. This rate can be as low as 3 days or as high as 14 days.
 
 ## Step 4: Learn how to punish
 
@@ -92,3 +98,5 @@ Congratulations! You've finished setting up Birdsong in your server, and you kno
 - [Commands Documentation](/docs)
 - [Punishment Key](/pkey)
 - [Frequently Asked Questions](/faq)
+
+Still stuck? [Join our Discord server!](https://discord.gg/4EzY2hmrTF)

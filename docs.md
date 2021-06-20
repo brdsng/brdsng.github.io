@@ -171,6 +171,12 @@ Set the guild's appeal link. When a user is permanently banned at 12 points, if 
 
 Note: All link inputs are parsed by a non-strict regex. If you are repeatedly getting an "invalid link" error, ensure that you have passed in a protocol (ex. `https://`) and there are no abnormal characters in the link.
 
+- `decay_rate`: Integer between 3 and 14
+
+Set the rate of point decay, in days. This rate is set at 7 days by default. Every `n` days without receiving a punishment, a user will decay one point. This rate can be as low as 3 days or as high as 14 days.
+
+Note: point decay applies from the date of the last punishment the user receives. If the user receives another punishment before they are set to decay a point, they will not decay that point.
+
 ***
 
 > ## `$$settings`
