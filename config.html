@@ -1,0 +1,287 @@
+<style>
+    table#point-gui {
+        display: table;
+        width: 75%;
+        margin-left: auto;
+        margin-right: auto;
+        counter-reset: row-number -1;
+    }
+    table#point-gui tr {
+        counter-increment: row-number;
+    }
+    table#point-gui td {
+        text-align: center;
+        margin: auto;
+    }
+    table#point-gui tr td:first-child::before {
+        content: counter(row-number);
+    }
+    div.inline {
+        margin: 20px auto;
+        text-align: center;
+    }
+    select[disabled], button:disabled {
+        /* ios wizardry */
+        opacity: 0.7;
+    }
+    .icon-container {
+        display: flex;
+        justify-content: space-between;
+        margin: 0 auto;
+        width: 70px;
+    }
+    img.icon-button {
+        height: 24px;
+        cursor: pointer;
+        vertical-align: top;
+    }
+    p#message {
+        font-weight: bold;
+        color: red;
+    }
+    #row-template {
+        display: none;
+    }
+    #results {
+        display: none;
+    }
+</style>
+
+<table id="row-template">
+    <tr>
+        <td></td>
+        <td>
+            <select class="action-menu">
+                <option value="0">Warn</option>
+                <option value="1">Mute</option>
+                <option value="2">Ban</option>
+            </select>
+        </td>
+        <td>
+            <input type="number" placeholder="#" name="duration" min="1" max="255">
+            <select class="duration-menu">
+                <option value="0">minutes</option>
+                <option value="1">hours</option>
+                <option value="2">days</option>
+                <option value="3">weeks</option>
+                <option value="4">permanently</option>
+            </select>
+        </td>
+        <td>
+            <div class="icon-container">
+                <img class="icon-button" src="/assets/images/arrow-up.svg" onclick="javascript:moveRow(this, -1)">
+                <img class="icon-button" src="/assets/images/arrow-down.svg" onclick="javascript:moveRow(this, 1)">
+                <img class="icon-button" src="/assets/images/error-cross.svg" onclick="javascript:deleteRow(this)">
+            </div>
+        </td>
+    </tr>
+</table>
+
+<p id="message"></p>
+<table id="point-gui">
+    <tbody>
+        <tr>
+            <th>Points</th>
+            <th>Action</th>
+            <th>Duration</th>
+            <th>Options</th>
+        </tr>
+    </tbody>
+</table>
+
+<div class="inline">
+    <button type="button" id="add-row-button">Add new row</button>
+    <button type="button" id="export-button">Export configuration</button>
+</div>
+
+<div id="results" class="inline">
+    <hr>
+    <h3>Run the following command in your server:</h3>
+    <pre id="result-command">$$set point_config dsfghsrgseuobinsobnofgbnixn</pre>
+    <p>Hint: Copy the URL to share your configuration with friends!</p>
+</div>
+
+<script>
+    const types = ["Warn user", "Mute user", "Ban user"];
+    const units = ["minutes", "hours", "days", "weeks"];
+    const gui = document.getElementById("point-gui");
+    const messageElement = document.getElementById("message");
+    const addRowButton = document.getElementById("add-row-button");
+    let defaultRow = document.getElementById("row-template").firstElementChild.rows[0].cloneNode(true);
+    function showMessage(text) { messageElement.innerHTML = text; };
+    function clearMessages() { messageElement.innerHTML = ""; };
+
+    function configFromString(base64) {
+        const raw = atob(base64);
+        let hex = '';
+        for (let i = 0; i < raw.length; i++) {
+            const _ = raw.charCodeAt(i).toString(16);
+            hex += (_.length === 2 ? _ : '0' + _);
+        }
+        const ints = hex.match(/.{3}/g).map(x => parseInt(x, 16));
+        let result = [];
+        for (let i = 0; i < ints.length; i++) {
+            let entry = {};
+            entry.type = (ints[i] & 3072) >> 10;
+            entry.unit = (ints[i] & 768) >> 8;
+            entry.duration = ints[i] & 255;
+            result.push(entry);
+            console.log(ints[i], entry)
+        }
+        return result
+    }
+
+    function stringFromConfig(data) {
+        let hex = "";
+        for (let i = 0; i < data.length; i++) {
+            let entry = data[i];
+            let initial = entry.type;
+            initial = (initial << 2) | entry.unit;
+            initial = (initial << 8) | entry.duration
+            hex += initial.toString(16).padStart(3, "0");
+        }
+        let result = "";
+        for (let i = 0; i < hex.length; i += 2) {
+            result += String.fromCharCode(parseInt(hex.substr(i, 2), 16));
+        }
+        return btoa(result).replace(/=/g, "");
+    }
+
+    function rowsFromConfig(data) {
+        let rows = []
+        for (let i = 0; i < data.length; i++) {
+            let entry = data[i];
+            let row = defaultRow.cloneNode(true);
+            let actionMenu = row.cells[1].firstElementChild
+            let durationInput = row.cells[2].children[0];
+            let unitMenu = row.cells[2].children[1];
+            actionMenu.value = entry.type.toString();
+            durationInput.value = entry.duration;
+            if (!(entry.duration || entry.unit) && (entry.type !== 0)) {
+                unitMenu.value = "4";
+            } else {
+                unitMenu.value = entry.unit.toString();
+            }
+            rows.push(row);
+        }
+        return rows
+    }
+
+    function addDefaultRow() {
+        let row = defaultRow.cloneNode(true);
+        gui.appendChild(row);
+        updateSelectEventListeners();
+    }
+
+    function updateResults(code) {
+        let displayDiv = document.getElementById("results");
+        results.style.display = "initial";
+
+        let output = document.getElementById("result-command");
+        output.innerHTML = "$$set point_config " + code;
+        window.history.replaceState({}, '', `${location.pathname}?${code}`);
+    }
+
+    addRowButton.addEventListener("click", addDefaultRow, false);
+
+    document.getElementById("export-button").addEventListener("click", function() {
+        clearMessages();
+        let config = []
+        for (let i = 1; i < gui.rows.length; i++) {
+            let entry = {}
+            let row = gui.rows[i];
+            entry.type = parseInt(row.cells[1].children[0].value);
+            let unit = parseInt(row.cells[2].children[1].value);
+            if (entry.type === 0 || unit === 4) {
+                entry.duration = 0;
+                entry.unit = 0;
+            } else {
+                entry.duration = row.cells[2].children[0].valueAsNumber || 0;
+                entry.unit = parseInt(row.cells[2].children[1].value);
+            }
+            console.log(entry)
+            if (!(entry.type >= 0 && entry.type <= 2)) {
+                return showMessage("Error in entry " + i + ": action out of range.");
+            } else if (!(entry.duration >= 0 && entry.duration <= 255)) {
+                return showMessage("Error in entry " + i + ": duration out of range, must be in range 0-255.")
+            } else if (!(entry.unit >= 0 && entry.unit <= 3)) {
+                return showMessage("Error in entry " + i + ": unit out of range.")
+            } else if (entry.unit === 0 && entry.duration === 0 && entry.type === 1) {
+                return showMessage("Error in entry " + i + ": Birdsong does not support permanent / zero length mutes at this time (check back later!)")
+            };
+            config.push(entry);
+        }
+        updateResults(stringFromConfig(config));
+    }, false);
+
+    function updateSelectEventListeners() {
+        function selectElementListener(event) {
+            let target = event.target;
+            let row = target.parentNode.parentNode
+            let tooManyRows = (row.parentNode.rows.length > 20);
+            if (target.className === "action-menu") {
+                let off = (target.value === "0");
+                let targetCell = row.cells[2];
+                targetCell.children[0].hidden = off;
+                let unitInput = targetCell.children[1];
+                unitInput.disabled = off;
+            } else if (target.className === "duration-menu") {
+                let off = (target.value === "4");
+                row.cells[2].children[0].hidden = off || (row.cells[1].children[0].value === "0");
+                addRowButton.disabled = tooManyRows || off;
+            }
+        }
+        let selectElements = document.querySelectorAll("select");
+        let changeEvent = new Event("change");
+        for (let i = 0; i < selectElements.length; i++) {
+            let elem = selectElements[i];
+            if (!elem.tagged) {
+                elem.addEventListener("change", selectElementListener, false);
+                elem.dispatchEvent(changeEvent);
+                elem.tagged = true;
+            }
+        }
+    };
+
+    function deleteRow(row) {
+        if (gui.rows.length === 2) return;
+        row = row.parentNode.parentNode.parentNode;
+        gui.removeChild(row);
+    };
+
+    function moveRow(row, offset) {
+        if (!offset) return;
+        if (offset > 0) offset++;
+        row = row.parentNode.parentNode.parentNode;
+        referenceRow = gui.rows[row.rowIndex + offset];
+        if (referenceRow && referenceRow.rowIndex == 0) return;
+        gui.removeChild(row);
+        gui.insertBefore(row, referenceRow)
+    };
+
+    document.addEventListener('DOMContentLoaded', function() {
+        if (param = window.location.search.substring(1)) {
+            try {
+                let config = configFromString(param);
+                showMessage("Loading configuration...");
+                let rows = rowsFromConfig(config);
+                for (let i = 0; i < rows.length; i++) {
+                    gui.appendChild(rows[i]);
+                };
+                updateResults(param);
+            } catch(err) {
+                setTimeout(function() {
+                    showMessage("An error occurred while trying to load this configuration.");
+                }, 1);
+                //console.log(err);
+            }
+        } else {
+            addDefaultRow();
+        }
+        updateSelectEventListeners();
+        clearMessages();
+        if (window.innerWidth <= 480) {
+            showMessage("Note: this tool works better when used on a larger device.")
+        }
+    }, false);
+</script>
