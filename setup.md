@@ -89,7 +89,7 @@ Modlogs are limited to six entries per page; to view more pages, simply add the 
 $$logs @miike 3
 ```
 
-# Step 5: Set up your point configuration
+## Step 5: Set up your point configuration
 
 A "point configuration" is what Birdsong uses to correlate an amount of points to a punishment; an example would be 2 points equals a 30 minute mute. We understand figuring this out can be a little daunting for users, so if you choose not to set up this option, your server will inherit the default point config. [Click here to view the default point config](/default-point-config).
 
