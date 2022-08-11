@@ -30,4 +30,4 @@ Birdsong's infraction point system is the [recommended form of rule enforcement 
 
 Accountability is key! When punishments are tied to infraction points, actions look better on your mod team overall, and accumulating punishments are an effective sign to follow the rules.
 
-## [Get started in just five steps.](/setup)
+## [Get started in five minutes.](/setup)

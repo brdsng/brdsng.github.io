@@ -102,7 +102,7 @@ title: Point Config
 <div id="results" class="inline">
     <hr>
     <h3>Run the following command in your server:</h3>
-    <pre id="result-command">$$set point_config dsfghsrgseuobinsobnofgbnixn</pre>
+    <pre id="result-command">/set point_config dsfghsrgseuobinsobnofgbnixn</pre>
     <p>Hint: Copy the URL to share your configuration with friends!</p>
 </div>
 
@@ -183,7 +183,7 @@ title: Point Config
         results.style.display = "initial";
 
         let output = document.getElementById("result-command");
-        output.innerHTML = "$$set point_config " + code;
+        output.innerHTML = "/set point_config " + code;
         window.history.replaceState({}, '', `${location.pathname}?${code}`);
     }
 

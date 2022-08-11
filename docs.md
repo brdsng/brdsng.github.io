@@ -5,186 +5,109 @@ title: Commands
 
 # Command Reference
 
-There are three access levels to keep in mind when working with Birdsong commands:
+**NOTE:** As of August 0th, 2022, Birdsong has switched to slash commands.
 
-- **All:** All users can run these commands.
-- **Mod:** Users with the designated moderator role in a guild can run these commands in that guild.
-- **Owner:** The owner of a guild can run these commands in their guild.
+There are three levels of access for commands. Users with a higher level of access can still access lower-level commands; for instance, server admins can run "mod" and "everyone" commands.
 
-# Access Level: **All**
+- **Everyone:** All users can run these commands.
+- **Mod:** Users with the server's moderator role can run these commands.
+- **Admin:** Users with the "manage server" permission can run these commands.
 
-***
-
-> ## `$$points`
-
-**Requires permissions:**
-
-- Channel: `add_reactions`
-
-Returns the user's current point value in a DM. If the user has private messages turned off, the command will fail.
+# Access Level: **Everyone**
 
 ***
 
-> ## `$$help`
+> ## `/info`
 
-**Aliases:** `$$info`, `$$about`
+Shows the user information about Birdsong, including a help, invite, and support link.
 
-**Requires permissions:**
+***
 
-- Channel: `add_reactions`
+> ## `/points`
 
-Sends an informational message about the bot in a DM. If the user has private messages turned off, the command will fail.
-
+Shows the user their current number of points, and when their next point decays.
 
 # Access Level: **Mod**
 
 ***
 
-> ## `$$point <user> <points> <reason?>`
-
-**Requires permissions:**
-
-- Channel: `send_messages`
-- Guild: `ban_members`, `manage_roles`
+> ## `/point <user> <points> <reason>`
 
 **Arguments:**
 
-- `points`: Integer between -100 and 100
-- `user`: User ID or mention
-- `reason`: Short description of the punishment (<256 characters) (default: none)
+- `user`: User's @mention or ID
+- `points`: Integer between -99 and 99
+- `reason`: Short description of the punishment (max 256 characters)
 
-Issue the user a certain a punishment including a certain number of points, and an optional reason.
+Issues the user a punishment based on the number of points provided. This will always override any previous active punishment the user had.
 
-- If `<points>` is positive, issue a punishment.
-- If `<points>` is negative, issue no punishment.
-
-The command will always cancel any active punishment the user may have had, and will note if it does so. This command does not require the target user to be in the guild.
+If a negative number of points is passed, the user's points will be subtracted, and if they had an active punishment, it will be cancelled.
 
 ***
 
-> ## `$$logs <user> <page?>`
-
-**Aliases:** `$$modlogs`
-
-**Requires permissions:**
-
-- Channel: `send_messages`
+> ## `/logs <user> <page?>`
 
 **Arguments:**
 
-- `user`: User ID or mention
-- `page`: Integer (default: 1)
+- `user`: User @mention or ID
+- `page`: Integer (default: first page)
 
-View a specific page of a user's modlogs. Six entries will appear on each page, including the following information:
+Opens an interactive modlog menu displaying the user's punishment history. Up to four entries are shown per page. Pages can be scrolled through the associated arrow buttons.
 
-- Punishment ID (eight-character identifier),
-- Punishment description (if any)
-- Timestamp of the punishment
-- Issuer of the punishment
-- Action taken (warn / mute / ban)
-- Amount of points the punishment was worth
-- Link to the issuing message
+The "user info" button displays some information about the user, including their account creation date and server join date. (This replaces the `$$userinfo` command.)
 
-The command will also show the user's active punishment (if any), and the user's current point value. This command does not require the target user to be in the guild.
+
+# Access Level: **Admin**
 
 ***
 
-> ## `$$who <user>`
+> ## `/configure` or `/settings`
 
-**Aliases:** `$$whois`, `$$userinfo`
+Opens an interactive settings menu displaying the server's settings. A select menu is available to select and modify settings.
 
-**Requires permissions:**
-
-- Channel: `send_messages`
-
-**Arguments:**
-
-- `user`: User ID or mention
-
-View information about a user, including the following:
-
-- User ID
-- Nickname
-- Account registration date
-- Guild join date
-- Profile picture
-
-This command will fail if the target user is not in the guild.
+This menu is the only way to "clear" settings.
 
 ***
 
-> ## `$$punishment <id>`
-
-**Aliases:** `$$p`, `$$pinfo`
-
-**Requires permissions:**
-
-- Channel: `send_messages`
+> ## `/set <setting> <value>`
 
 **Arguments:**
 
-- `user`: Punishment ID (valid eight-character identifier from a modlog)
+- `setting`: A valid setting (see below)
+- `value`: The value to set
 
-View information about a specific punishment, in a similar fashion as `$$logs`.
-
-This command will fail if the target punishment ID does not exist.
-
-
-# Access Level: **Owner**
-
-***
-
-> ## `$$set <setting> <value|none>`
-
-**Requires permissions:**
-
-- Channel: `send_messages`
-
-**Arguments:**
-
-- `setting`: A valid, alphanumeric setting (see below)
-- `value`: The value to set, or "none" or "null" (see below for types)
-
-Set a guild-wide configuration setting. Pass in "none" or "null" for any setting to reset that setting (may have unintended consequences, read below).
+Sets a server-wide configuration setting. The implications of these settings are explained below.
 
 **List of settings:**
 
-- `log_channel`: Channel ID or mention
+> `mod_role`: Role @mention or ID
 
-Set the guild's moderator log channel. When a moderator punishes a user, a short description of the punishment will be sent to this channel for logging purposes. It is recommended you keep this channel private and restricted to viewing for only moderators and guild admins.
+Set the server's moderator role. When this is set, users that have the specific role will be able to run moderator commands.
 
-- `mod_role`: Role ID or mention
+**Note:** If this role is not set, only server admins will be able to run moderation commands.
 
-Set the guild's moderator role. When this is set, users that have the specific role will be able to run moderator commands.
+> `mute_role`: Role @mention or ID
 
-Note: If this role is not set, only the guild owner will be able to run moderation commands.
+Set the server's mute role. When a user in the server is muted, the bot will automatically give them this role. This role should have restricted "send messages" permissions to work effectively.
 
-- `mute_role`: Role ID or mention
+**Note:** If this role is not set, any attempts to mute users in the server will fail.
 
-Set the guild's mute role. When a user in the guild is muted, the bot will automatically give them this role. It is recommended you restrict sending and speaking permissions on this role so it functions as a proper mute.
+> `point_config`: [Point configuration code](/config)
 
-Note: If this role is not set, any attempts to mute users in the guild will fail.
+This option determines what punishment happens when a user receives a point in the server. Visit the online configuration wizard for further details. ([link: configuration wizard](/config))
 
-- `appeal_link`: Valid link
+**Note:** If this option is not set, a default configuration will be used. ([link: default configuration](/default-point-config))
 
-Set the guild's appeal link. When a user is permanently banned at 12 points, if the guild has an appeal link set, the user will be sent the appeal link in their ban message. This will allow for guilds to run their own appeal forms (typically through Google Forms).
+> `log_channel`: Channel #mention or ID
 
-Note: All link inputs are parsed by a non-strict regex. If you are repeatedly getting an "invalid link" error, ensure that you have passed in a protocol (ex. `https://`) and there are no abnormal characters in the link.
+Set the server's moderator log channel. When a moderator punishes a user, a short description of the punishment will be sent to this channel for logging purposes. This channel should be kept private and restricted to viewing for only moderators and server admins.
 
-- `decay_rate`: Integer between 3 and 14
+> `appeal_link`: Valid link
+
+Set the server's appeal link (eg. a google form). When a user is permanently banned, if this option is set, the user will be sent this link to appeal their ban.
+
+**Note:** All link inputs are parsed by a non-strict regex. If you are repeatedly getting an "invalid link" error, ensure that you have passed in a protocol (ex. `https://`) and there are no abnormal characters in the link.
+
+> `decay_rate`: Integer between 3 and 14
 
 Set the rate of point decay, in days. This rate is set at 7 days by default. Every `n` days without receiving a punishment, a user will decay one point. This rate can be as low as 3 days or as high as 14 days.
-
-Note: point decay applies from the date of the last punishment the user receives. If the user receives another punishment before they are set to decay a point, they will not decay that point.
-
-***
-
-> ## `$$settings`
-
-**Requires permissions:**
-
-- Channel: `send_messages`
-
-Returns all of the guild's currently set settings. Any setting that has not been set will read as "none set".
-
-To set settings, use the `$$set` command.
