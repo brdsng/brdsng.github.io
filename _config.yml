@@ -1,4 +1,8 @@
 theme: jekyll-theme-cayman
 title: Birdsong
 description: The first points-based infraction bot (recommended by Discord) for ease, speed, and control in modding.
-image: /assets/images/birdsong-circular.png
+defaults:
+  - scope:
+      path: ""
+    values:
+      image: /assets/images/birdsong-circular.png
