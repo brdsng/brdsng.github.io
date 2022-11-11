@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Slash Command Migration
+display_name: Slash Command Migration
 ---
 
 # Migration to slash commands (v1.0.0)

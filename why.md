@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Why Birdsong?
+display_name: Why Birdsong?
 ---
 
 

@@ -1,3 +1,8 @@
+---
+layout: default
+display_name: Privacy Policy
+---
+
 # Your privacy
 
 The developers of Birdsong take your privacy very seriously. All personal information is collected by fair and lawful means, with your full knowledge and consent. Your data will never be shared with or sold to third-parties entities under any circumstance, except when required by law.

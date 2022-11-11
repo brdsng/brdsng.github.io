@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Quick Setup
+display_name: Quick Setup
 ---
 
 

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Default Point Config
+display_name: Default Point Config
 ---
 
 # What's this?

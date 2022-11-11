@@ -1,3 +1,8 @@
+---
+layout: default
+display_name: Terms Of Use
+---
+
 # Terms of use
 
 Thank you for choosing Birdsong. By continuing to use this website and/or interacting with the Birdsong Discord bot, you agree to the following terms of use.
