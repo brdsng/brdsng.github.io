@@ -5,7 +5,7 @@ title: Commands
 
 # Command Reference
 
-**NOTE:** As of August 0th, 2022, Birdsong has switched to slash commands.
+**NOTE:** As of August 11th, 2022, Birdsong has switched to slash commands.
 
 There are three levels of access for commands. Users with a higher level of access can still access lower-level commands; for instance, server admins can run "mod" and "everyone" commands.
 

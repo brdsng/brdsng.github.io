@@ -15,4 +15,4 @@ Requests for data removal may be honored on a limited basis, however, "mod-log" 
 
 Further inquiries about Birdsong's privacy practices may be directed to `miike#3459`. Additional relevant information can be found in the [Discord Terms of Service](https://discord.com/terms).
 
-> This document was last updated on November 11th, 2022. Birdsong is not affiliated in any way with Discord, Inc.
+<sub>This document was last updated on November 11th, 2022. Birdsong is not affiliated in any way with Discord, Inc.</sub>

@@ -10,4 +10,4 @@ Birdsong's ownership team is not liable for the violation of the terms above, no
 
 To get in touch, [visit our support server](https://discord.gg/4EzY2hmrTF) and/or send a direct message to `miike#3459`.
 
-> This document was last updated on November 11th, 2022. Birdsong is not affiliated in any way with Discord, Inc.
+<sub>This document was last updated on November 11th, 2022. Birdsong is not affiliated in any way with Discord, Inc.</sub>
