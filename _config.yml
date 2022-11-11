@@ -1,3 +1,4 @@
 theme: jekyll-theme-cayman
 title: Birdsong
-description: A modern moderation bot for Discord.
+description: The first points-based infraction bot (recommended by Discord) for ease, speed, and control in modding.
+image: /assets/images/birdsong-circular.png

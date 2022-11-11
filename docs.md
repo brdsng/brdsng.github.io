@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Commands
+title: Commands - Birdsong
 ---
 
 # Command Reference
