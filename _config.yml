@@ -6,3 +6,4 @@ defaults:
       path: ""
     values:
       image: /assets/images/birdsong-circular.png
+      title: Birdsong - moderation bot

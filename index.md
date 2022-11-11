@@ -1,7 +1,6 @@
 ---
 layout: default
-title: Home
-page_title: Birdsong - moderation bot
+display_name: Home
 ---
 
 # Welcome to Birdsong

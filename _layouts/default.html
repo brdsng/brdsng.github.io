@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
 
 {% seo title=false %}
-    <title>{% if page.title != site.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
+    <title>{% if page.display_name != site.title %}{{ page.display_name }} - {% endif %}{{ site.title }}</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style" type="text/css" crossorigin>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,7 +20,7 @@
         <img class="project-name" src="{{ "/assets/images/birdsong-circular.png" | prepend: site.baseurl }}">
         <a class="project-name" href="/">Birdsong</a>
       </div>
-      <h2 class="project-tagline">{{ page.description | default: site.description | default: site.github.project_tagline }}</h2>
+      <h2 class="project-tagline">A modern moderation bot for Discord.</h2>
       <a href="https://discord.com/oauth2/authorize?client_id=817513543049674773&permissions=403041382&scope=bot" class="btn">Add bot to server</a>
       <a href="https://discord.gg/4EzY2hmrTF" class="btn">Join the Discord</a>
     </header>
