@@ -24,7 +24,7 @@ With Birdsong, you stay in one channel and give out infraction points. There's n
 
 Your users cry "mod abuse" when your mods give out punishments themselves. Users ignore your warnings and mutes, and they just won't stop making trouble.
 
-Birdsong's infraction point system is the [recommended form of rule enforcement by the Discord Moderator Academy](https://discord.com/moderation/1500000176081-203:-Developing-Server-Rules#Rule-Enforcement):
+Birdsong's infraction point system is the [recommended form of rule enforcement by the Discord Moderator Academy](https://discord.com/moderation/1500000176081-203-Developing-Server-Rules#title-4):
 
 > **Points based -** If you’d like the accountability of the strikes/infraction based system coupled with the flexibility of the case by case system, consider a points based rule enforcement structure. In this system, each rule is worth a certain number of points based on the importance and severity of breaking the rule where moderators can adjust the point value with an additional explanation for accountability.
 

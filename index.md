@@ -5,7 +5,7 @@ title: Home
 
 # Welcome to Birdsong
 
-Birdsong is a modern Discord modbot for ease, speed, and control in modding. We use a point-based infraction system ([recommended by Discord](https://discord.com/moderation/1500000176081-203:-Developing-Server-Rules#Rule-Enforcement)) that is lauded for ease of use and configuration by server owners across the platform.
+Birdsong is a modern Discord modbot for ease, speed, and control in modding. We use a point-based infraction system ([recommended by Discord](https://discord.com/moderation/1500000176081-203-Developing-Server-Rules#title-4)) that is lauded for ease of use and configuration by server owners across the platform.
 
 ## Helpful Links
 
